@@ -1,0 +1,108 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:#131316 ;
+    color: white;
+}
+
+.navigation-bar {
+    background-color: #1e1e1e;
+    display: flex; /* Use flexbox for the container */
+    align-items: center;
+}
+
+.navbar {
+    height: 85px;
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggler {
+    border: 1px solid transparent; /* No visible border initially */
+    border-radius: 5px; /* Rounded corners */
+    background-color: transparent; /* Transparent background */
+    outline: none; /* Remove default focus outline */
+    transition: border 0.3s ease; /* Smooth transition for border changes */
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    border: 3px solid #ffffff !important; /* White border when focused or active */
+}
+
+.navbar-toggler i {
+    color: #fdfdff; 
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler i:hover {
+    transform: rotate(90deg);
+}
+
+#logo {
+    font-size: 50px;
+    font-weight: 900;
+    margin-right: 30px;
+    color: white;
+    background-color: transparent;
+}
+
+#collapse-button{
+    color: white;
+}
+
+#nav-in {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#searchbar {
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #333; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+}
+
+#searching {
+    margin-left: 10px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; 
+}
+
+#searchbar::placeholder {
+    color: #aaa; 
+}
+
+.fa-magnifying-glass {
+    font-size: 25px;
+    color: white;
+}
+
+.circle {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px;
+    background-color: white; 
+    border-radius: 50%; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.circle i {
+    font-size: 25px; 
+    color: black;
+    background-color: transparent;
+}
