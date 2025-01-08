@@ -1,108 +1,240 @@
-body{
+/* Body */
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color:#131316 ;
+    background-color: #131316;
     color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar{
+    padding: 0px;
 }
 
 .navigation-bar {
     background-color: #1e1e1e;
-    display: flex; /* Use flexbox for the container */
-    align-items: center;
-}
-
-.navbar {
-    height: 85px;
-    background-color: #1e1e1e;
     display: flex;
     align-items: center;
+    padding: 0 20px;
+    transition: background-color 0.3s ease;
 }
 
-.navbar-toggler {
-    border: 1px solid transparent; /* No visible border initially */
-    border-radius: 5px; /* Rounded corners */
-    background-color: transparent; /* Transparent background */
-    outline: none; /* Remove default focus outline */
-    transition: border 0.3s ease; /* Smooth transition for border changes */
+.navigation-bar:hover {
+    background-color: #292929;
 }
 
-.navbar-toggler:focus,
-.navbar-toggler:active {
-    border: 3px solid #ffffff !important; /* White border when focused or active */
-}
-
-.navbar-toggler i {
-    color: #fdfdff; 
-    transition: transform 0.3s ease;
-}
-
-.navbar-toggler i:hover {
-    transform: rotate(90deg);
-}
-
+/* Logo */
 #logo {
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 900;
-    margin-right: 30px;
-    color: white;
-    background-color: transparent;
+    color: #fdfdff;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff00ff;
+    animation: logoGlow 1.5s infinite;
+    cursor: pointer;
 }
 
-#collapse-button{
-    color: white;
+/* Updated Glow Effect */
+
+@keyframes circleGlow {
+    0% {
+        box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 15px #ff00ff;
+        background-color: #ff007f;
+    }
+    50% {
+        box-shadow: 0 0 10px #ff00ff, 0 0 15px #ff007f, 0 0 20px #ff00ff;
+        background-color: #ff00ff;
+    }
+    100% {
+        box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 15px #ff00ff;
+        background-color: #ff007f;
+    }
 }
 
+/* Nav Items */
 #nav-in {
-    font-size: 40px;
-    font-weight: 700;
-    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 15px;
+    color: #ccc;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+#nav-in:hover {
+    color: #fdfdff;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: #fdfdff;
+    transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+    width: 100%;
+}
+
+/* Search Bar */
+#searching {
     margin-left: 10px;
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #searchbar {
-    height: 40px;
-    padding: 5px 10px;
-    font-size: 16px;
-    background-color: #333; 
-    color: white; 
+    background-color: #333;
+    color: white;
     border: none;
-    border-radius: 5px; 
-}
-
-#searching {
-    margin-left: 10px;
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    flex-grow: 1; 
+    border-radius: 20px;
+    padding: 8px 15px;
+    transition: box-shadow 0.3s ease;
+    width: 250px;
 }
 
 #searchbar::placeholder {
-    color: #aaa; 
+    color: #b0b0b0; /* Light grey placeholder for better visibility */
+    font-style: italic; /* Optional: adds a touch of style */
+}
+
+#searchbar:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .fa-magnifying-glass {
-    font-size: 25px;
+    font-size: 18px;
     color: white;
 }
 
+/* Profile Icon */
 .circle {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px; 
+    width: 40px;
     height: 40px;
-    background-color: white; 
-    border-radius: 50%; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-    margin-left: 10px;
-    margin-top: 8px;
+    background: linear-gradient(135deg, #ff007f, #ff00ff);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.circle:hover {
+    transform: scale(1.1);
 }
 
 .circle i {
-    font-size: 25px; 
+    font-size: 20px;
     color: black;
-    background-color: transparent;
+}
+
+/* Footer */
+.footer {
+    background-color: #1e1e1e;
+    color: #fdfdff;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #292929;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-logo {
+    font-size: 40px;
+    font-weight: 900;
+    color: #fdfdff;
+    text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff00ff;
+    animation: logoGlow 1.5s infinite;
+    margin: 10px 0;
+}
+
+.footer-description {
+    font-size: 16px;
+    color: #ccc;
+    margin: 10px 0 20px 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ccc;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #fdfdff;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: #fdfdff;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff007f, #ff00ff);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-icon a {
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.footer-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(255, 0, 127, 0.5);
+}
+
+.footer-icon a:hover {
+    color: #ff007f;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: #777;
+    margin-top: 20px;
 }
