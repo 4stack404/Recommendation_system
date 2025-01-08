@@ -40,6 +40,81 @@
             </div>
         </nav>
     </header>
+    <main class="container-fluid">
+        <!-- Carousel -->
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../Data/picture1.jpg" class="d-block w-100" alt="Movie 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="../Data/picture2.jpg" class="d-block w-100" alt="Movie 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="../Data/picture3.jpg" class="d-block w-100" alt="Movie 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    
+        <!-- Your Top 10 Section -->
+        <div class="mt-4">
+            <h3>Your Top 10</h3>
+            <div class="top-10-container">
+                <button id="prevTop10" class="top-10-arrow left-arrow">&lt;</button>
+                <div class="top-10-wrapper">
+                    <div class="movie-card">
+                        <img src="../Data/movie1.jpg" alt="Movie 1">
+                        <h3>Movie 1</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie2.jpg" alt="Movie 2">
+                        <h3>Movie 2</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie3.png" alt="Movie 3">
+                        <h3>Movie 3</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie4.jpg" alt="Movie 4">
+                        <h3>Movie 4</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie5.jpg" alt="Movie 5">
+                        <h3>Movie 5</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie1.jpg" alt="Movie 6">
+                        <h3>Movie 6</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie2.jpg" alt="Movie 7">
+                        <h3>Movie 7</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie3.png" alt="Movie 8">
+                        <h3>Movie 8</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie4.jpg" alt="Movie 9">
+                        <h3>Movie 9</h3>
+                    </div>
+                    <div class="movie-card">
+                        <img src="../Data/movie5.jpg" alt="Movie 10">
+                        <h3>Movie 10</h3>
+                    </div>
+                </div>
+                <button id="nextTop10" class="top-10-arrow right-arrow">&gt;</button>
+            </div>    
+        </div>
+    </main>
     <footer class="footer">
         <div class="container">
             <h1 class="footer-logo">MovieFlix</h1>
@@ -75,5 +150,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-<script src="Script/script.js"></script>
+<script src="../Script/script.js"></script>
 </html>

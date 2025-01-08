@@ -25,4 +25,20 @@
         margin-top: 15px;
         margin-bottom: 15px;
     }
+
+    .movie-card {
+        flex: 0 0 33.33%; /* 3 movies per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-card {
+        flex: 0 0 50%; /* 2 movies per row on small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .movie-card {
+        flex: 0 0 100%; /* 1 movie per row on extra small screens */
+    }
 }
