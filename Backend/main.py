@@ -1,3 +1,4 @@
+import utils.session
 import pandas as pd
 import pickle as pkl
 from fastapi import FastAPI
