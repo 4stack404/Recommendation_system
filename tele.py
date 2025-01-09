@@ -3,9 +3,8 @@ import pandas as pd
 from groq import Groq
 
 def load_dataset():
-    # Load the dataset
-    file_path = '/Users/harshpandey/PycharmProjects/Bots/dataset.csv'
-    dataset = pd.read_csv(file_path)
+    
+    dataset = pd.read_csv("dataset.csv")
     return dataset
 
 def recommend_movie(preferences, dataset):
@@ -14,7 +13,7 @@ def recommend_movie(preferences, dataset):
     for _, row in dataset.iterrows():
         match_score = 0
 
-        # Match tags with user preferences
+ 
         for key, value in preferences.items():
             if value and str(value).lower() in str(row['tags']).lower():
                 match_score += 1
@@ -22,14 +21,14 @@ def recommend_movie(preferences, dataset):
         if match_score > 0:
             recommendations.append((row['title'], match_score))
 
-    # Sort recommendations by match score
+   
     recommendations.sort(key=lambda x: x[1], reverse=True)
-    return recommendations[:3]  # Return top 3 recommendations
+    return recommendations[:3]  
 
 def main():
     client = Groq(api_key="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")
 
-    # Load the movie dataset
+    
     dataset = load_dataset()
 
     messages = [
