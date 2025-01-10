@@ -96,7 +96,7 @@
         text-align: center; 
         padding: 1rem;
         border-radius: 0.5rem;
-        width: 90%; 
+        width: 80%; 
         max-width: 600px; 
     }
 
@@ -161,16 +161,200 @@
         margin-top: 0rem; 
         color: yellow; 
     }
+
+    .footer-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        gap: 15px;
+        align-items: center;
+    }
+
+    .middle-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin-left: 0px;  /* Reset any margin-top that might cause misalignment */
+    }
+
+    .footer-social {
+        gap: 15px;
+    }
 }
 
 @media (max-width: 768px) {
-    .movie-card {
-        flex: 0 0 50%; 
+    .movieCard {
+        flex: 0 0 calc(100% / 2 - 20px); /* 2 cards for tablets */
+    }
+    .carousel h2 {
+        text-align: start;
+        margin-bottom: 20px;
+        color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #969696;
+        font-size: 4rem;
+        position: relative;
+        font-weight: 900;
+    }
+
+    .top10-Text h3{
+        margin-top: 40px;
+        margin-left: 15px;
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 576px) {
-    .movie-card {
-        flex: 0 0 100%; 
+
+    .slide-content {
+        position: absolute; 
+        bottom: 5%; 
+        left: 50%;
+        transform: translateX(-50%); 
+        color: white;
+        text-align: center; 
+        padding: 1rem;
+        border-radius: 0.5rem;
+        width: 80%; 
+        max-width: 400px; 
+    }
+    /* Align genre and release date above the title */
+    .movie-info {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        flex-wrap: wrap; /* Ensure wrapping for small screens */
+        text-align: center;
+    }
+
+    /* Center title and make it responsive */
+    .slide-title {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+        font-weight: bold;
+        text-align: center; /* Ensure the title is centered */
+        margin-bottom: 1rem;
+        word-wrap: break-word; /* Handle long words properly */
+    }
+
+    /* Limit description text and center-align it */
+    .slide-description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        display: -webkit-box; /* Enable line clamping */
+        -webkit-line-clamp: 3; /* Limits text to 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Hide overflowing text */
+        text-align: center; /* Center-align the text */
+    }
+
+    /* Button container styling */
+    .buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    }
+
+    /* See More and Watchlist buttons */
+    .btn-see-more,
+    .btn-watchlist {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        background-color: white;
+        color: black;
+        border-radius: 0.4rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: 1px solid black; /* Added border for a cleaner look */
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    /* Button hover effect */
+    .btn-see-more:hover,
+    .btn-watchlist:hover {
+        background-color: black;
+        color: white;
+    }
+
+    /* Rating styling */
+    .rating {
+        display: block;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        color: yellow;
+        text-align: center; /* Center the rating */
+    }
+
+    .movieCard {
+        flex: 0 0 calc(100% / 1 - 20px); /* 2 cards for tablets */
+    }
+
+    .top10-Text{
+        display:block;
+        flex-wrap: nowrap;
+    }
+
+    .carousel h2 {
+        text-align: start;
+        margin-left: 18px;
+        margin-bottom: 0px;
+        color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #969696;
+        font-size: 5rem;
+        position: relative;
+        font-weight: 900;
+    }
+
+    .top10-Text h3{
+        margin-top: 0px;
+        margin-left: 20px;
+        font-size: 1.25rem;
+    }
+
+    .footer-logo {
+        font-size: 30px;
+    }
+
+    .footer-description {
+        font-size: 14px;
+    }
+
+    .footer-links {
+        gap: 10px;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .middle-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin-left: 0px;  /* Reset any margin-top that might cause misalignment */
+    }
+
+    .footer-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-icon a {
+        font-size: 18px;
+    }
+
+    .footer-copyright {
+        font-size: 12px;
     }
 }
+
+

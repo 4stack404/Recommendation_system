@@ -1,72 +1,111 @@
-const prevBtn = document.getElementById("prevTop10");
-const nextBtn = document.getElementById("nextTop10");
-const top10Wrapper = document.querySelector(".top-10-wrapper");
+const slider = document.querySelector(".slider");
+const slides = document.querySelectorAll(".slide");
+const navDots = document.querySelectorAll(".slider-nav a");
 
-// Initialize scroll position
-let scrollPosition = 0;
+let currentIndex = 0;
 
-function getMoviesToScroll() {
-    const screenWidth = window.innerWidth;
-    if (screenWidth < 576) return 1; // Move 1 movie for extra small screens
-    if (screenWidth < 768) return 2; // Move 2 movies for small screens
-    if (screenWidth < 991) return 3; // Move 3 movies for medium screens
-    return 4; // Move 4 movies for large screens
+// Function to move the slider and update active dot
+function moveSlider(index) {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+    updateActiveDot(index);
 }
+
+// Function to update active dot
+function updateActiveDot(index) {
+    navDots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index); // Add 'active' class to current dot
+    });
+}
+
+// Add event listeners to navigation dots
+navDots.forEach((dot, index) => {
+    dot.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default anchor behavior
+        currentIndex = index;
+        moveSlider(currentIndex);
+    });
+});
+
+// Add click events for left and right arrows
+document.querySelector(".right-arrow").addEventListener("click", () => {
+    if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        moveSlider(currentIndex);
+    }
+});
+
+document.querySelector(".left-arrow").addEventListener("click", () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        moveSlider(currentIndex);
+    }
+});
+
+// Set the first dot as active on page load
+updateActiveDot(currentIndex);
+
+
+//Top 10 Movies Slider
+
+const carousel = document.querySelector(".carousel-container");
+const movieCards = document.querySelectorAll(".movieCard");
+const arrowLeft = document.querySelector(".arrow-left");
+const arrowRight = document.querySelector(".arrow-right");
+
+let currentPosition = 0; // Track the current position of the carousel
 
 function updateCarousel() {
-    const movieCardWidth = document.querySelector(".movie-card").offsetWidth;
-    const gap = 20; // Adjust if you have a different gap value in your CSS
-    const scrollAmount = (movieCardWidth + gap) * getMoviesToScroll();
+    // Dynamically calculate card width, including the gap
+    const cardWidth = movieCards[0].offsetWidth + 20; // Add gap between cards
+    const maxScrollPosition = (movieCards.length * cardWidth) - carousel.offsetWidth;
 
-    const wrapperWidth = top10Wrapper.scrollWidth;
-    const containerWidth = document.querySelector(".top-10-container").offsetWidth;
+    // Update arrow click events with new values
+    arrowRight.addEventListener("click", () => {
+        if (currentPosition < maxScrollPosition) {
+            currentPosition += cardWidth;
+            carousel.style.transform = `translateX(-${currentPosition}px)`;
+        }
+    });
 
-    // Disable buttons if at the edges
-    prevBtn.disabled = scrollPosition <= 0;
-    nextBtn.disabled = scrollPosition >= wrapperWidth - containerWidth;
-
-    // Apply transform to scroll the movies
-    top10Wrapper.style.transform = `translateX(-${scrollPosition}px)`;
+    arrowLeft.addEventListener("click", () => {
+        if (currentPosition > 0) {
+            currentPosition -= cardWidth;
+            carousel.style.transform = `translateX(-${currentPosition}px)`;
+        }
+    });
 }
 
-// Event listener for next button
-nextBtn.addEventListener("click", () => {
-    const movieCardWidth = document.querySelector(".movie-card").offsetWidth;
-    const gap = 20; // Adjust if your CSS has a different gap value
-    const scrollAmount = (movieCardWidth + gap) * getMoviesToScroll();
-
-    const wrapperWidth = top10Wrapper.scrollWidth;
-    const containerWidth = document.querySelector(".top-10-container").offsetWidth;
-
-    // Ensure we don't scroll beyond the max width
-    if (scrollPosition < wrapperWidth - containerWidth) {
-        scrollPosition = Math.min(
-            scrollPosition + scrollAmount,
-            wrapperWidth - containerWidth
-        );
-    }
-
-    updateCarousel();
-});
-
-// Event listener for previous button
-prevBtn.addEventListener("click", () => {
-    const movieCardWidth = document.querySelector(".movie-card").offsetWidth;
-    const gap = 20; // Adjust if your CSS has a different gap value
-    const scrollAmount = (movieCardWidth + gap) * getMoviesToScroll();
-
-    // Ensure we don't scroll beyond the minimum (0)
-    if (scrollPosition > 0) {
-        scrollPosition = Math.max(scrollPosition - scrollAmount, 0);
-    }
-
-    updateCarousel();
-});
-
-// Update carousel on window resize
+// Recalculate values on window resize
 window.addEventListener("resize", () => {
-    updateCarousel();
+    currentPosition = 0; // Reset position
+    carousel.style.transform = "translateX(0px)"; // Reset transform
+    updateCarousel(); // Recalculate values
 });
 
-// Initialize the carousel
+// Initialize carousel
 updateCarousel();
+
+// Background Image updater
+
+// Get all movie cards
+// const movieCards = document.querySelectorAll('.movieCard');
+
+// Listen for hover event on each movie card
+const mainElement = document.querySelector('main');
+
+
+movieCards.forEach(card => {
+    card.addEventListener("mouseenter", function () {
+        // Get the custom image URL stored in the data-image attribute
+        const customImage = card.getAttribute("data-image");
+        
+        // Set the background image for the ::before pseudo-element
+        mainElement.style.setProperty("--background-image", `url(${customImage})`);
+        mainElement.classList.add("active");
+    });
+
+    card.addEventListener("mouseleave", function () {
+        // Remove the background image when hover ends
+        mainElement.classList.remove("active");
+    });
+});

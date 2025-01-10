@@ -42,6 +42,7 @@
     </header>
     <section class="container-carousel">
         <div class="slider-wrapper">
+            <button class="arrows left-arrow">&lt;</button>
             <div class="slider">
                 <!-- Slide 1 -->
                 <div class="slide" id="slide-1">
@@ -94,17 +95,16 @@
                 <!-- Slide 3 -->
                 <div class="slide" id="slide-3">
                     <div class="slide-content">
-                        <h1 class="slide-title">Mad Max</h1>
+                        <h1 class="slide-title">The Martian</h1>
                         <div class="movie-info">
                             <span class="badge">HD</span>
-                            <span class="rating">⭐ 8.1</span>
-                            <span class="release-date">2015-05-15</span>
-                            <span class="genre">Action</span>
+                            <span class="rating">⭐7.6</span>
+                            <span class="release-date">2015-09-30</span>
                             <span class="genre">Adventure</span>
+                            <span class="genre">Science Fiction</span>
                         </div>
                         <p class="slide-description">
-                            In a post-apocalyptic wasteland, Max teams up with Furiosa to escape a cult
-                            leader and his followers.
+                            During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.
                         </p>
                         <div class="buttons-container">
                             <button class="btn-see-more">
@@ -115,66 +115,70 @@
                             </button>
                         </div>
                     </div>
-                    <img src="../Data/Mad Max.jpg" alt="Mad Max" />
+                    <img src="../Data/Martian.jpg" alt="The Martian" />
                 </div>
             </div>
+            <button class="arrows right-arrow">&gt;</button>
         </div>
         <div class="slider-nav">
-            <a href="#slide-1"></a>
-            <a href="#slide-2"></a>
-            <a href="#slide-3"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
         </div>
     </section>
-    <main class="container-fluid">   
-        <div class="mt-4">
-            <h3>Your Top 10</h3>
-            <div class="top-10-container">
-                <button id="prevTop10" class="top-10-arrow left-arrow">&lt;</button>
-                <div class="top-10-wrapper">
-                    <div class="movie-card">
+    <main>
+        <section class="Top-10-movies">
+            <div class="carousel">
+                <div class="top10-Text">
+                    <h2>TOP 10</h2>
+                    <h3>RECOMMENDATIONS</h3>
+                </div>
+                <button class="arrow arrow-left">&#8249;</button>
+                <div class="carousel-container">
+                    <div class="movieCard" data-image="../Data/Avengers.jpg">
                         <img src="../Data/AvengersPoster.jpg" alt="Movie 1">
-                        <h3>Movie 1</h3>
+                        <div class="ranking">1</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/Mad Max Poster.jpg" alt="Movie 2">
-                        <h3>Movie 2</h3>
+                    <div class="movieCard" data-image="../Data/IronMan3.jpg"> 
+                        <img src="../Data/IronMan3 Poster.jpg" alt="Movie 2">
+                        <div class="ranking">2</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/Zathura Poster.jpg" alt="Movie 3">
-                        <h3>Movie 3</h3>
+                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
+                        <img src="../Data/Mad Max Poster.jpg" alt="Movie 3">
+                        <div class="ranking">3</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 4">
-                        <h3>Movie 4</h3>
+                    <div class="movieCard" data-image="../Data/Zathura.jpg">
+                        <img src="../Data/Zathura Poster.jpg" alt="Movie 1">
+                        <div class="ranking">4</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 5">
-                        <h3>Movie 5</h3>
+                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
+                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 1">
+                        <div class="ranking">5</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/AvengersPoster.jpg" alt="Movie 6">
-                        <h3>Movie 6</h3>
+                    <div class="movieCard" data-image="../Data/Avengers.jpg">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 1">
+                        <div class="ranking">6</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/AvengersPoster.jpg" alt="Movie 7">
-                        <h3>Movie 7</h3>
+                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
+                        <img src="../Data/IronMan3 Poster.jpg" alt="Movie 2">
+                        <div class="ranking">7</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/AvengersPoster.jpg" alt="Movie 8">
-                        <h3>Movie 8</h3>
+                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
+                        <img src="../Data/Mad Max Poster.jpg" alt="Movie 3">
+                        <div class="ranking">8</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/AvengersPoster.jpg" alt="Movie 9">
-                        <h3>Movie 9</h3>
+                    <div class="movieCard" data-image="../Data/Zathura.jpg">
+                        <img src="../Data/Zathura Poster.jpg" alt="Movie 1">
+                        <div class="ranking">9</div>
                     </div>
-                    <div class="movie-card">
-                        <img src="../Data/AvengersPoster.jpg" alt="Movie 10">
-                        <h3>Movie 10</h3>
+                    <div class="movieCard" data-image="../Data/Mad Max_Fury Road.jpg">
+                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 1">
+                        <div class="ranking">10</div>
                     </div>
                 </div>
-                <button id="nextTop10" class="top-10-arrow right-arrow">&gt;</button>
-            </div>    
-        </div>
+                <button class="arrow arrow-right">&#8250;</button>
+            </div>
+        </section>
     </main>
     <footer class="footer">
         <div class="container">
@@ -182,30 +186,50 @@
             <p class="footer-description">
                 We recommend you movies based on your taste and your current mood
             </p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Help</a>
-                <a href="#" class="footer-link">About Us</a>
-                <a href="#" class="footer-link">Contact</a>
+    
+            <div class="footer-sections">
+                <!-- Left Section: Explore, Home, Profile, Watchlist, Watch History -->
+                <div class="footer-links left-footer">
+                    <a href="#" class="footer-link">Explore</a>
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#" class="footer-link">Profile</a>
+                    <a href="#" class="footer-link">Watchlist</a>
+                    <a href="#" class="footer-link">Watch History</a>
+                </div>
+    
+                <!-- Middle Section: Help, About Us, Contact -->
+                <div class="footer-links middle-footer">
+                    <a href="#" class="footer-link">Help</a>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+    
+                <!-- Right Section: Social Media Links -->
+                <div class="footer-social right-footer">
+                    <div class="footer-icons">
+                        <div class="footer-icon">
+                            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </div>
+                        <div class="footer-icon">
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="footer-icon">
+                            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+                        <div class="footer-icon">
+                            <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-icons">
-                <div class="footer-icon">
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                </div>
-                <div class="footer-icon">
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="footer-icon">
-                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                </div>
-                <div class="footer-icon">
-                    <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
-                </div>
-            </div>
+    
             <p class="footer-copyright">
                 © 2025 MovieFlix. All rights reserved
             </p>
         </div>
     </footer>
+    
+    
     
 </body>
 
