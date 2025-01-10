@@ -4,7 +4,7 @@
     }
 
     #logo {
-        font-size: 50px;
+        font-size: 30px;
         font-weight: 900;
         margin-left: 10px;
         margin-right: 30px;
@@ -16,8 +16,8 @@
         display: flex; 
         justify-content: center;
         align-items: center;
-        width: 50px; 
-        height: 50px;
+        width: 40px; 
+        height: 40px;
         background-color: white; 
         border-radius: 50%; 
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
@@ -27,18 +27,150 @@
     }
 
     .movie-card {
-        flex: 0 0 33.33%; /* 3 movies per row on medium screens */
+        flex: 0 0 33.33%; 
+    }
+
+    .navigation-bar {
+        background-color:transparent;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    #nav-in {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0 15px;
+        color: #ccc;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    #searchbar {
+        background-color: #33333375;
+        color: #ccc;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+        transition: box-shadow 0.3s ease;
+        width: 250px;
+        height: 30px;
+        font-size: 15px;
+    }
+    
+    #searchbar::placeholder {
+        color: #cccccc46;; 
+        font-style: italic; 
+        font-size: 15px;
+    }
+
+    .slider-wrapper {
+        height: 100vh; 
+        max-height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider {
+        height: 100%; 
+    }
+
+    .slider img {
+        object-fit: cover; 
+        height: 100%; 
+        width: 100%; 
+    }
+
+    .slide {
+        position: relative; 
+    }
+
+    .slide-content {
+        position: absolute; 
+        bottom: 5%; 
+        left: 50%;
+        transform: translateX(-50%); 
+        color: white;
+        text-align: center; 
+        padding: 1rem;
+        border-radius: 0.5rem;
+        width: 90%; 
+        max-width: 600px; 
+    }
+
+    /* Genre and release date above title */
+    .movie-info {
+        display: flex;
+        justify-content: center;
+        gap: 1.0rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        flex-wrap: wrap; 
+    }
+
+    /* Title in the center */
+    .slide-title {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    /* Movie description below the title */
+    .slide-description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1rem; 
+        -webkit-line-clamp: 3; /* Limits text to 4 lines */
+        -webkit-box-orient: vertical;
+    }
+
+    
+    .buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem; 
+        margin-top: 1rem;
+    }
+
+    .btn-see-more,
+    .btn-watchlist {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        background-color: white;
+        color: black;
+        border-radius: 0.4rem;
+        text-transform: uppercase;
+        font-weight:600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-see-more:hover,
+    .btn-watchlist:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .rating {
+        display: block; 
+        font-size: 1rem;
+        margin-top: 0rem; 
+        color: yellow; 
     }
 }
 
 @media (max-width: 768px) {
     .movie-card {
-        flex: 0 0 50%; /* 2 movies per row on small screens */
+        flex: 0 0 50%; 
     }
 }
 
 @media (max-width: 576px) {
     .movie-card {
-        flex: 0 0 100%; /* 1 movie per row on extra small screens */
+        flex: 0 0 100%; 
     }
 }

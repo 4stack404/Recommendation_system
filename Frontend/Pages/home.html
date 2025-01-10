@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid navigation-bar">
+            <div class="container navigation-bar">
                 <a class="navbar-brand" href="#" id="logo">MovieFlix</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span><i class="fa-solid fa-bars" style="color: white;"></i></span>
@@ -40,74 +40,135 @@
             </div>
         </nav>
     </header>
-    <main class="container-fluid">
-        <!-- Carousel -->
-        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../Data/picture1.jpg" class="d-block w-100" alt="Movie 1">
+    <section class="container-carousel">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <!-- Slide 1 -->
+                <div class="slide" id="slide-1">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Mad Max : Fury Road</h1>
+                        <div class="movie-info">
+                            <span class="badge">HD</span>
+                            <span class="rating">⭐ 7.0</span>
+                            <span class="release-date">2025-01-09</span>
+                            <span class="genre">Western</span>
+                            <span class="genre">Drama</span>
+                        </div>
+                        <p class="slide-description">
+                            An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.
+                        </p>
+                        <button class="btn-see-more">
+                            <i class="fa-solid fa-play"></i> See More
+                        </button>
+                        <button class="btn-watchlist">
+                            <i class="fa-solid fa-plus"></i> Add to Watchlist
+                        </button>
+                    </div>
+                    <img src="../Data/Mad Max_Fury Road.jpg" alt="American Primeval" />
                 </div>
-                <div class="carousel-item">
-                    <img src="../Data/picture2.jpg" class="d-block w-100" alt="Movie 2">
+    
+                <!-- Slide 2 -->
+                <div class="slide" id="slide-2">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Avengers</h1>
+                        <div class="movie-info">
+                            <span class="badge">HD</span>
+                            <span class="rating">⭐ 8.5</span>
+                            <span class="release-date">2012-05-04</span>
+                            <span class="genre">Action</span>
+                            <span class="genre">Sci-Fi</span>
+                        </div>
+                        <p class="slide-description">
+                            When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!
+                        </p>
+                        <button class="btn-see-more">
+                            <i class="fa-solid fa-play"></i> See More
+                        </button>
+                        <button class="btn-watchlist">
+                            <i class="fa-solid fa-plus"></i> Add to Watchlist
+                        </button>
+                    </div>
+                    <img src="../Data/Avengers.jpg" alt="Avengers" />
                 </div>
-                <div class="carousel-item">
-                    <img src="../Data/picture3.jpg" class="d-block w-100" alt="Movie 3">
+    
+                <!-- Slide 3 -->
+                <div class="slide" id="slide-3">
+                    <div class="slide-content">
+                        <h1 class="slide-title">Mad Max</h1>
+                        <div class="movie-info">
+                            <span class="badge">HD</span>
+                            <span class="rating">⭐ 8.1</span>
+                            <span class="release-date">2015-05-15</span>
+                            <span class="genre">Action</span>
+                            <span class="genre">Adventure</span>
+                        </div>
+                        <p class="slide-description">
+                            In a post-apocalyptic wasteland, Max teams up with Furiosa to escape a cult
+                            leader and his followers.
+                        </p>
+                        <div class="buttons-container">
+                            <button class="btn-see-more">
+                                <i class="fa-solid fa-play"></i> See More
+                            </button>
+                            <button class="btn-watchlist">
+                                <i class="fa-solid fa-plus"></i> Add to Watchlist
+                            </button>
+                        </div>
+                    </div>
+                    <img src="../Data/Mad Max.jpg" alt="Mad Max" />
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
-    
-        <!-- Your Top 10 Section -->
+        <div class="slider-nav">
+            <a href="#slide-1"></a>
+            <a href="#slide-2"></a>
+            <a href="#slide-3"></a>
+        </div>
+    </section>
+    <main class="container-fluid">   
         <div class="mt-4">
             <h3>Your Top 10</h3>
             <div class="top-10-container">
                 <button id="prevTop10" class="top-10-arrow left-arrow">&lt;</button>
                 <div class="top-10-wrapper">
                     <div class="movie-card">
-                        <img src="../Data/movie1.jpg" alt="Movie 1">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 1">
                         <h3>Movie 1</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie2.jpg" alt="Movie 2">
+                        <img src="../Data/Mad Max Poster.jpg" alt="Movie 2">
                         <h3>Movie 2</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie3.png" alt="Movie 3">
+                        <img src="../Data/Zathura Poster.jpg" alt="Movie 3">
                         <h3>Movie 3</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie4.jpg" alt="Movie 4">
+                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 4">
                         <h3>Movie 4</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie5.jpg" alt="Movie 5">
+                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 5">
                         <h3>Movie 5</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie1.jpg" alt="Movie 6">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 6">
                         <h3>Movie 6</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie2.jpg" alt="Movie 7">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 7">
                         <h3>Movie 7</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie3.png" alt="Movie 8">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 8">
                         <h3>Movie 8</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie4.jpg" alt="Movie 9">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 9">
                         <h3>Movie 9</h3>
                     </div>
                     <div class="movie-card">
-                        <img src="../Data/movie5.jpg" alt="Movie 10">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 10">
                         <h3>Movie 10</h3>
                     </div>
                 </div>
