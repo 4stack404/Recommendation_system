@@ -30,7 +30,7 @@ async function getMoviesInitial() {
 
     let url1 = `https://recommendation-system-4g5y.onrender.com/recommend/${movieNames}`;
 
-    console.log("Fetching from URL:", url1);
+    // console.log("Fetching from URL:", url1);
 
     try {
         const response = await fetch(url1);
@@ -40,11 +40,11 @@ async function getMoviesInitial() {
         }
 
        const data = await response.json(); //Parse the response as JSON
-       console.log("API Response:", data);
+    //    console.log("API Response:", data);
 
     // Extract the recommendations array
        const movies = data.recommendations || [];
-        console.log("Recommendations:", movies);
+        // console.log("Recommendations:", movies);
 
         const slides = document.querySelectorAll(".slide");
 
@@ -71,7 +71,7 @@ async function getMoviesInitial() {
         })
 
         movieIds = movies.map(movie => movie.id);
-        console.log("Movie IDs for next function:", movieIds);
+        // console.log("Movie IDs for next function:", movieIds);
 
         getAllMovieDetails().then(() => {
             initializeHoverEffect();
