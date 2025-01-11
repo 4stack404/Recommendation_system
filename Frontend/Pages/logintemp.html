@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Selector</title>
+    <link rel="stylesheet" href="../CSS/loginStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Favorite Movies</h1>
+        <div class="search-container">
+            <input id="movie-search" type="text" placeholder="Search for a movie..." autocomplete="off">
+            <ul id="suggestions"></ul>
+        </div>
+        <div id="selected-movies">
+            <h2>Selected Movies (0/5)</h2>
+            <ul id="selected-movies-list"></ul>
+        </div>
+        <button id="submit-btn" disabled>Submit</button>
+    </div>
+    <script src="../Script/loginScript.js"></script>
+</body>
+</html>

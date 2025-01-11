@@ -1,3 +1,146 @@
+//Loader
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+    loader.classList.add("hidden");
+
+    // setTimeout(() => {
+    //     const loader = document.querySelector(".loader");
+    //     loader.classList.add("hidden"); // Add 'hidden' class
+    // }, 1000); // 1-second delay for smooth animation
+});
+
+//API CALL 
+
+// let moviesString = localStorage.getItem("selectedMovies");
+
+// let moviesObject = JSON.parse(moviesString);
+
+// let movieNames = "";
+// let movieIds = [];
+
+
+// moviesObject.forEach((movie,index) => {
+//     movieNames += movie.original_title;
+//     if(index < moviesObject.length - 1){
+//         movieNames += ",";
+//     }
+
+//     movieIds.push(movie.id);
+
+// });
+
+// let url1 = `https://recommendation-system-4g5y.onrender.com/recommend/${movieNames}`;
+
+// console.log(url1);
+
+// async function getMoviesInitial() {
+//     try{
+//         const response = await fetch(url1);
+//         const data = await JSON.parse(response);
+//         console.log(data);
+//     }catch(error){
+//         console.log("Erorr: ", error);
+//     }
+// }
+
+// getMoviesInitial();
+
+//2ND API CALL for top 10
+
+const apiKey = "bb40bba9ec0647c0d0b72356663d2967";
+// const movieIds = [138843, 280092, 155, 1726, 8966, 9502, 53182, 238636, 9360, 157336]; 
+const movieIds = [99861, 140607, 135397, 27205, 138843, 280092, 9502, 1359, 42246, 211672]; 
+// Replace with your movie IDs
+const movieDetails = [];
+
+// Function to fetch movie details
+async function fetchMovieDetails(movieId) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data for movie ID: ${movieId}`);
+        }
+        const data = await response.json();
+        return {
+            id: movieId,
+            vote_average: data.vote_average,
+            backdrop_path: `https://image.tmdb.org/t/p/original${data.backdrop_path}`,
+            poster_path: `https://image.tmdb.org/t/p/original${data.poster_path}`
+        };
+    } catch (error) {
+        console.error(error.message);
+        return null; // Return null for failed fetch
+    }
+}
+
+// Fetch details for all movies
+async function getAllMovieDetails() {
+    try {
+        const fetchPromises = movieIds.map(movieId => fetchMovieDetails(movieId));
+        const results = await Promise.all(fetchPromises);
+
+        // Filter out any null results and push to movieDetails
+        results.forEach(result => {
+            if (result) {
+                movieDetails.push(result);
+            }
+        });
+
+        // console.log("Movie Details:", movieDetails);
+
+        const carouselContainer = document.querySelector(".carousel-container");
+
+        carouselContainer.innerHTML = ""
+
+        // Example: Use the data (e.g., render on a page)
+        movieDetails.forEach((movie,index) => {
+            const movieCard = document.createElement("div");
+            movieCard.classList.add("movieCard");
+            movieCard.setAttribute("data-image", movie.backdrop_path);
+
+            movieCard.innerHTML = 
+            `
+            <img src="${movie.poster_path}" alt="Movie 1">
+            <div class="ranking">${index + 1}</div>
+            <div class="action-icons">
+                <!-- Watch Later Icon with Hover Text -->
+                <div class="action-icon">
+                    <i class="fas fa-clock"></i>
+                    <span class="hover-text">Watch Later</span>
+                </div>
+                    
+                <!-- Already Watched Icon with Hover Text -->
+                <div class="action-icon">
+                    <i class="fas fa-check"></i>
+                    <span class="hover-text">Already Watched</span>
+                </div>
+                    
+                <!-- Interested Icon with Hover Text -->
+                <div class="action-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="hover-text">Interested</span>
+                </div>
+            </div>
+            `
+
+            carouselContainer.appendChild(movieCard);
+        });
+        // console.log("Movie details have been updated in the DOM.");
+        updateCarousel();
+    } catch (error) {
+        console.error("Error fetching movie details:", error);
+    }
+}
+
+// Run the function
+getAllMovieDetails().then(() => {
+    initializeHoverEffect();
+});
+
+//--------------------------------------------------------------------------------------------
+
+
 const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slide");
 const navDots = document.querySelectorAll(".slider-nav a");
@@ -55,11 +198,13 @@ const arrowRight = document.querySelector(".arrow-right");
 let currentPosition = 0; // Track the current position of the carousel
 
 function updateCarousel() {
-    // Dynamically calculate card width, including the gap
-    const cardWidth = movieCards[0].offsetWidth + 20; // Add gap between cards
+    const movieCards = document.querySelectorAll(".movieCard"); // Query the movie cards dynamically
+    if (movieCards.length === 0) return; // Exit if no movie cards
+
+    const cardWidth = movieCards[0].offsetWidth + 20; // Include gap between cards
     const maxScrollPosition = (movieCards.length * cardWidth) - carousel.offsetWidth;
 
-    // Update arrow click events with new values
+    // Add click event for the right arrow
     arrowRight.addEventListener("click", () => {
         if (currentPosition < maxScrollPosition) {
             currentPosition += cardWidth;
@@ -67,12 +212,15 @@ function updateCarousel() {
         }
     });
 
+    // Add click event for the left arrow
     arrowLeft.addEventListener("click", () => {
         if (currentPosition > 0) {
             currentPosition -= cardWidth;
             carousel.style.transform = `translateX(-${currentPosition}px)`;
         }
     });
+
+    // console.log("Carousel initialized. Max Scroll Position:", maxScrollPosition);
 }
 
 // Recalculate values on window resize
@@ -83,7 +231,7 @@ window.addEventListener("resize", () => {
 });
 
 // Initialize carousel
-updateCarousel();
+// updateCarousel();
 
 // Background Image updater
 
@@ -91,24 +239,40 @@ updateCarousel();
 // const movieCards = document.querySelectorAll('.movieCard');
 
 // Listen for hover event on each movie card
-const mainElement = document.querySelector('main');
+// Background Image updater
 
+// Dynamically fetch the movie cards after they are rendered
+function initializeHoverEffect() {
+    const movieCards = document.querySelectorAll(".movieCard");
+    const mainElement = document.querySelector("main");
 
-movieCards.forEach(card => {
-    card.addEventListener("mouseenter", function () {
-        // Get the custom image URL stored in the data-image attribute
-        const customImage = card.getAttribute("data-image");
-        
-        // Set the background image for the ::before pseudo-element
-        mainElement.style.setProperty("--background-image", `url(${customImage})`);
-        mainElement.classList.add("active");
+    // Ensure movie cards exist
+    if (!movieCards || movieCards.length === 0) {
+        console.error("No movie cards found.");
+        return;
+    }
+
+    // Listen for hover event on each movie card
+    movieCards.forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+            // Get the custom image URL stored in the data-image attribute
+            const customImage = card.getAttribute("data-image");
+            if (customImage) {
+                // Set the background image for the ::before pseudo-element
+                mainElement.style.setProperty("--background-image", `url(${customImage})`);
+                mainElement.classList.add("active");
+            }
+        });
+
+        card.addEventListener("mouseleave", function () {
+            // Remove the background image when hover ends
+            mainElement.classList.remove("active");
+        });
     });
+}
 
-    card.addEventListener("mouseleave", function () {
-        // Remove the background image when hover ends
-        mainElement.classList.remove("active");
-    });
-});
+// Call the function after dynamically loading the movie cards
+
 
 
 //Footer Animation
@@ -163,3 +327,7 @@ document.addEventListener('click', function (event) {
         dropdown.classList.remove('show');
     }
 });
+
+
+
+
