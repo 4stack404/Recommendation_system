@@ -109,3 +109,57 @@ movieCards.forEach(card => {
         mainElement.classList.remove("active");
     });
 });
+
+
+//Footer Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const footer = document.querySelector('.footer');
+    const footerLogo = document.querySelector('.footer-logo');
+    const footerDescription = document.querySelector('.footer-description');
+    const footerSections = document.querySelector('.footer-sections');
+    const footerLinks = document.querySelectorAll('.footer-links');
+    const footerSocial = document.querySelector('.footer-social');
+    const footerCopyright = document.querySelector('.footer-copyright');
+
+    // Create an intersection observer to detect when the footer is in view
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // If footer is in view, trigger animations
+                footer.style.opacity = 1;
+                footer.style.transform = 'translateY(0)';
+                footerLogo.style.opacity = 1;
+                footerLogo.style.transform = 'translateY(0)';
+                footerDescription.style.opacity = 1;
+                footerDescription.style.transform = 'translateY(0)';
+                footerSections.style.opacity = 1;
+                footerSections.style.transform = 'translateY(0)';
+                footerSocial.style.opacity = 1;
+                footerSocial.style.transform = 'translateY(0)';
+                footerCopyright.style.opacity = 1;
+                footerCopyright.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.2 // Trigger when 20% of the footer is visible
+    });
+
+    // Observe the footer element
+    observer.observe(footer);
+});
+
+//Logout Button
+
+// Toggle the dropdown visibility
+document.querySelector('.profile-icon').addEventListener('click', function () {
+    const dropdown = document.querySelector('.profile-dropdown');
+    dropdown.classList.toggle('show');
+});
+
+// Hide the dropdown when clicking outside
+document.addEventListener('click', function (event) {
+    const dropdown = document.querySelector('.profile-dropdown');
+    if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('show');
+    }
+});

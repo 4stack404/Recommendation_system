@@ -21,10 +21,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link hover-underline" href="#" id="nav-in">Home</a>
+                            <a class="nav-link hover-underline" href="#" id="nav-in" data-hover-text="Home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hover-underline" href="#" id="nav-in">Explore</a>
+                            <a class="nav-link hover-underline" href="#" id="nav-in" data-hover-text="Explore">Explore</a>
                         </li>
                     </ul>
                     <form class="d-flex flex-grow-1" id="searching" role="search">
@@ -33,13 +33,19 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                    <div class="circle">
-                        <i class="fa-regular fa-user"></i>
+                    <div class="profile-dropdown">
+                        <div class="circle profile-icon">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="logout">Logout</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
+    
     <section class="container-carousel">
         <div class="slider-wrapper">
             <button class="arrows left-arrow">&lt;</button>
@@ -65,7 +71,7 @@
                             <i class="fa-solid fa-plus"></i> Add to Watchlist
                         </button>
                     </div>
-                    <img src="../Data/Mad Max_Fury Road.jpg" alt="American Primeval" />
+                    <img src="../Data/MMFR.jpg" alt="American Primeval" />
                 </div>
     
                 <!-- Slide 2 -->
@@ -138,42 +144,232 @@
                     <div class="movieCard" data-image="../Data/Avengers.jpg">
                         <img src="../Data/AvengersPoster.jpg" alt="Movie 1">
                         <div class="ranking">1</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="movieCard" data-image="../Data/IronMan3.jpg"> 
                         <img src="../Data/IronMan3 Poster.jpg" alt="Movie 2">
                         <div class="ranking">2</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
+                    <div class="movieCard" data-image="../Data/MadMax.jpg">
                         <img src="../Data/Mad Max Poster.jpg" alt="Movie 3">
                         <div class="ranking">3</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="movieCard" data-image="../Data/Zathura.jpg">
-                        <img src="../Data/Zathura Poster.jpg" alt="Movie 1">
+                        <img src="../Data/Zathura Poster.jpg" alt="Movie 4">
                         <div class="ranking">4</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
-                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 1">
+                    <div class="movieCard" data-image="../Data/MMFR.jpg">
+                        <img src="../Data/Mad_Max_Fury Road Poster.jpg" alt="Movie 5">
                         <div class="ranking">5</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="movieCard" data-image="../Data/Avengers.jpg">
-                        <img src="../Data/AvengersPoster.jpg" alt="Movie 1">
+                        <img src="../Data/AvengersPoster.jpg" alt="Movie 6">
                         <div class="ranking">6</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="movieCard" data-image="../Data/IronMan3.jpg">
-                        <img src="../Data/IronMan3 Poster.jpg" alt="Movie 2">
+                        <img src="../Data/IronMan3 Poster.jpg" alt="Movie 7">
                         <div class="ranking">7</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="movieCard" data-image="../Data/IronMan3.jpg">
-                        <img src="../Data/Mad Max Poster.jpg" alt="Movie 3">
+                    <div class="movieCard" data-image="../Data/MadMax.jpg">
+                        <img src="../Data/Mad Max Poster.jpg" alt="Movie 8">
                         <div class="ranking">8</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="movieCard" data-image="../Data/Zathura.jpg">
-                        <img src="../Data/Zathura Poster.jpg" alt="Movie 1">
+                        <img src="../Data/Zathura Poster.jpg" alt="Movie 9">
                         <div class="ranking">9</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="movieCard" data-image="../Data/Mad Max_Fury Road.jpg">
-                        <img src="../Data/Mad Max_Fury Road Poster.jpg" alt="Movie 1">
+                    <div class="movieCard" data-image="../Data/MMFR.jpg">
+                        <img src="../Data/Mad_Max_Fury Road Poster.jpg" alt="Movie 10">
                         <div class="ranking">10</div>
+                        <div class="action-icons">
+                            <!-- Watch Later Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                                <span class="hover-text">Watch Later</span>
+                            </div>
+                    
+                            <!-- Already Watched Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-check"></i>
+                                <span class="hover-text">Already Watched</span>
+                            </div>
+                    
+                            <!-- Interested Icon with Hover Text -->
+                            <div class="action-icon">
+                                <i class="fas fa-heart"></i>
+                                <span class="hover-text">Interested</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button class="arrow arrow-right">&#8250;</button>
@@ -228,9 +424,6 @@
             </p>
         </div>
     </footer>
-    
-    
-    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>

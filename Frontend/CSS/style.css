@@ -26,8 +26,9 @@ header {
     display: flex;
     align-items: center;
     padding: 0 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 
 /* Logo */
 #logo {
@@ -36,13 +37,21 @@ header {
     color: #fdfdff;
     text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
     cursor: pointer;
+    transition: transform 0.5s ease, color 0.3s ease;
+}
+
+#logo:hover {
+    transform: rotateY(360deg);
+    color: #ffffff;
 }
 
 /* Nav Items */
+/* Navbar Links */
 #nav-in {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     margin: 0 15px;
+    margin-top: 5px;
     color: #ccc;
     text-transform: uppercase;
     position: relative;
@@ -84,7 +93,7 @@ header {
     transition: box-shadow 0.3s ease;
     width: 250px;
     height: 30px;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 #searchbar::placeholder {
@@ -101,6 +110,12 @@ header {
 .fa-magnifying-glass {
     font-size: 21px;
     color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.fa-magnifying-glass:hover {
+    transform: scale(1.2); /* Slightly enlarges the icon */
+    color: #ccc; /* Changes the icon color on hover */
 }
 
 /* Profile Icon */
@@ -108,22 +123,69 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 37.5px;
-    height: 37.5px;
-    background-color: #ccc;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(51, 51, 51, 0.8); /* Match navbar */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .circle:hover {
     transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .circle i {
     font-size: 18px;
-    color: black;
+    color: white;
+}
+
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 110%; /* Position dropdown below the profile icon */
+    right: 0;
+    background-color: rgba(51, 51, 51, 0.95); /* Match navbar colors */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    list-style: none;
+    padding: 5px 0; /* Compact padding */
+    display: none; /* Hidden by default */
+    z-index: 100;
+    min-width: 150px; /* Compact width */
+}
+
+.dropdown-menu li {
+    margin: 0; /* Remove default list margins */
+}
+
+.dropdown-menu li a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px; /* Compact padding */
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fdfdff;
+}
+
+/* Show dropdown */
+.profile-dropdown.show .dropdown-menu {
+    display: block;
 }
 
 /*Main CAROUSEL*/
@@ -369,7 +431,7 @@ header {
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    /* overflow: hidden; */
+    overflow: visible;
     gap: 20px; /* Add spacing between cards */
     padding: 0 10px; /* Add padding to keep content centered */
 }
@@ -379,13 +441,143 @@ header {
     box-sizing: border-box;
     padding: 10px;
     position: relative;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, z-index 0.3s ease-in-out ;
+    z-index: 1;
+    border-radius: 2px;
+    /* overflow: hidden; */
+    /* opacity: 0; */
+    /* transform: translateY(50px); Initial animation state */
+    /* animation: staggeredSlideIn 0.8s ease-out forwards;
+    animation-delay: calc(var(--card-index) * 0.2s);
+    animation-fill-mode: forwards;  */
 }
+
+@keyframes staggeredSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movieCard:hover {
+    transform: scale(1.1) translateY(-5px) !important; /* Scaling with a slight vertical lift */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important; /* Adding shadow for hover effect */
+    z-index: 5; /* Keep the card above others */
+}
+
+.movieCard .action-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none; /* Hide the icons by default */
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Hover effect for the movie card */
+.movieCard:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+/* Show the action icons when hovering over the card */
+.movieCard:hover .action-icons {
+    display: flex; /* Show the icons when the card is hovered */
+}
+
+/* Individual Action Icon */
+.action-icon {
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Text */
+.hover-text {
+    position: absolute;
+    bottom: 30px; /* Position the text above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    visibility: hidden;
+}
+
+/* Hover Effects for Action Icons */
+.action-icon:hover {
+    transform: scale(1.1);
+}
+
+.action-icon:hover .hover-text {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+    visibility: visible;
+}
+
+/* .movieCard:nth-child(1) {
+    --card-index: 0;
+}
+.movieCard:nth-child(2) {
+    --card-index: 1;
+}
+.movieCard:nth-child(3) {
+    --card-index: 2;
+}
+.movieCard:nth-child(4) {
+    --card-index: 3;
+}
+.movieCard:nth-child(5) {
+    --card-index: 4;
+}
+.movieCard:nth-child(6) {
+    --card-index: 5;
+}
+.movieCard:nth-child(7) {
+    --card-index: 6;
+}
+.movieCard:nth-child(8) {
+    --card-index: 7;
+}
+.movieCard:nth-child(9) {
+    --card-index: 8;
+}
+.movieCard:nth-child(10) {
+    --card-index: 9;
+} */
 
 .movieCard img {
     width: 100%;
     aspect-ratio: 2 / 3;
     object-fit: cover;
     border-radius: 2px;
+}
+
+.ranking {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    font-size: 6rem;
+    color: transparent;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: rgba(220, 38, 38, 0.651);
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6), 
+                 2px 2px 5px rgba(0, 0, 0, 0.45);
+    cursor: default;
 }
 
 .movieCard .ranking {
@@ -463,6 +655,7 @@ main::before {
 }
 
 /* Footer */
+/* Footer Styling */
 .footer {
     color: #333;
     padding: 30px 20px;
@@ -471,6 +664,10 @@ main::before {
     font-family: 'Poppins', sans-serif;
     background-color: #0d0d0d;
     z-index: 1;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    transform: translateY(50px); /* Start from a lower position */
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .footer-logo {
@@ -478,12 +675,22 @@ main::before {
     font-weight: 900;
     color: #fdfdff;
     margin: 10px 0;
+    opacity: 0;
+    animation: slideUp 1s ease-out 0.3s forwards; /* Slide up and fade in */
+    transition: transform 0.5s ease, color 0.3s ease;
 }
+
+.footer-logo:hover {
+    cursor: default;
+}
+
 
 .footer-description {
     font-size: 16px;
     color: #666;
     margin: 10px 0 20px 0;
+    opacity: 0;
+    animation: slideUp 1s ease-out 0.5s forwards; /* Slide up and fade in */
 }
 
 /* Footer Sections */
@@ -494,23 +701,22 @@ main::before {
     gap: 40px;
     margin-bottom: 20px;
     align-items: flex-start;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.7s forwards; /* Fade in and slide up */
 }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-}
-
+/* Links Animation */
+.footer-links,
 .middle-footer {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    align-items: center;
-    margin-left: 100px;  /* Reset any margin-top that might cause misalignment */
+    align-items: flex-start;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1s forwards;
 }
 
+/* Footer Link Styling */
 .footer-link {
     font-size: 18px;
     font-weight: 600;
@@ -546,6 +752,8 @@ main::before {
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1.3s forwards; /* Fade in */
 }
 
 .footer-icons {
@@ -555,6 +763,7 @@ main::before {
     margin-bottom: 20px;
 }
 
+/* Footer Icon Hover Effects */
 .footer-icon {
     width: 50px;
     height: 50px;
@@ -565,6 +774,8 @@ main::before {
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInScale 0.8s ease-out 1.5s forwards; /* Fade in with scale */
 }
 
 .footer-icon a {
@@ -574,7 +785,7 @@ main::before {
 }
 
 .footer-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -587,4 +798,96 @@ main::before {
     font-size: 14px;
     color: #777;
     margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.7s forwards;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.footer-logo,
+.footer-description,
+.footer-sections,
+.footer-links,
+.middle-footer,
+.footer-social,
+.footer-copyright {
+    opacity: 0; /* Start hidden */
+    transform: translateY(50px); /* Start from a lower position */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/*Scrollbar*/
+
+/* Apply scrollbar styling to the whole site */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the vertical scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* The scrollbar track */
+::-webkit-scrollbar-track {
+    background: rgba(51, 51, 51, 0.8); /* Match with website's theme */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* The scrollbar handle (thumb) */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4); /* Light handle color */
+    border-radius: 5px; /* Rounded corners */
+    border: 3px solid rgba(51, 51, 51, 0.8); /* Adds padding effect */
+}
+
+/* Handle hover effect */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6); /* Brighter on hover */
+}
+
+/* Optional: For horizontal scrollbars */
+::-webkit-scrollbar-horizontal {
+    height: 10px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb-horizontal {
+    background: rgba(255, 255, 255, 0.4);
 }

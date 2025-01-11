@@ -18,12 +18,34 @@
         align-items: center;
         width: 40px; 
         height: 40px;
-        background-color: white; 
+        background-color: rgba(51, 51, 51, 0.8); /* Match navbar */ 
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 50%; 
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
         margin-left: 12px;
         margin-top: 15px;
         margin-bottom: 15px;
+    }
+
+     /* Align dropdown to the right */
+     .dropdown-menu {
+        position: absolute;
+        top: 80%; /* Position dropdown below the profile icon */
+        left: 15%;
+        background-color: rgba(51, 51, 51, 0.95); /* Match navbar colors */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        list-style: none;
+        padding: 5px 0; /* Compact padding */
+        display: none; /* Hidden by default */
+        z-index: 100;
+        min-width: 150px; /* Compact width */
+    }
+
+    /* Logout button alignment */
+    .dropdown-item.logout-btn {
+        text-align: right; /* Align text within the button */
     }
 
     .movie-card {
