@@ -1,55 +1,93 @@
 //Loader
 window.addEventListener("load", () => {
-    const loader = document.querySelector(".loader");
-    loader.classList.add("hidden");
+    // const loader = document.querySelector(".loader");
+    // loader.classList.add("hidden");
 
-    // setTimeout(() => {
-    //     const loader = document.querySelector(".loader");
-    //     loader.classList.add("hidden"); // Add 'hidden' class
-    // }, 1000); // 1-second delay for smooth animation
+    setTimeout(() => {
+        const loader = document.querySelector(".loader");
+        loader.classList.add("hidden"); // Add 'hidden' class
+    }, 2000); // 2-second delay for smooth animation
 });
 
 //API CALL 
 
-// let moviesString = localStorage.getItem("selectedMovies");
+let movieIds = [];
 
-// let moviesObject = JSON.parse(moviesString);
+async function getMoviesInitial() {
+    let moviesString = localStorage.getItem("selectedMovies");
+    let moviesObject = JSON.parse(moviesString);
 
-// let movieNames = "";
-// let movieIds = [];
+    let movieNames = "";
+    movieIds = [];
 
+    moviesObject.forEach((movie, index) => {
+        movieNames += movie.original_title;
+        if (index < moviesObject.length - 1) {
+            movieNames += ",";
+        }
+        movieIds.push(movie.id);
+    });
 
-// moviesObject.forEach((movie,index) => {
-//     movieNames += movie.original_title;
-//     if(index < moviesObject.length - 1){
-//         movieNames += ",";
-//     }
+    let url1 = `https://recommendation-system-4g5y.onrender.com/recommend/${movieNames}`;
 
-//     movieIds.push(movie.id);
+    console.log("Fetching from URL:", url1);
 
-// });
+    try {
+        const response = await fetch(url1);
 
-// let url1 = `https://recommendation-system-4g5y.onrender.com/recommend/${movieNames}`;
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+        }
 
-// console.log(url1);
+       const data = await response.json(); //Parse the response as JSON
+       console.log("API Response:", data);
 
-// async function getMoviesInitial() {
-//     try{
-//         const response = await fetch(url1);
-//         const data = await JSON.parse(response);
-//         console.log(data);
-//     }catch(error){
-//         console.log("Erorr: ", error);
-//     }
-// }
+    // Extract the recommendations array
+       const movies = data.recommendations || [];
+        console.log("Recommendations:", movies);
 
-// getMoviesInitial();
+        const slides = document.querySelectorAll(".slide");
+
+        // Display the top 3 recommended movies
+        movies.slice(0,3).forEach((movie,index) => {
+            const slide = slides[index];
+
+            if(slide){
+                slide.querySelector(".slide-title").textContent = movie.title;
+                slide.querySelector(".rating").textContent = `⭐ ${movie.rating}`;
+                slide.querySelector(".release-date").textContent = movie.release_date;  
+
+                const genres = movie.genres.slice(0, 2).join(", ");
+                const genreElements = slide.querySelectorAll(".genre");
+                genreElements.forEach((genreElement, idx) => {
+                    genreElement.textContent = idx < 2 ? genres.split(", ")[idx] : "";
+                });
+
+                slide.querySelector(".slide-description").textContent = movie.overview;
+
+                // Example placeholder image
+                slide.querySelector("img").src = "";   
+            }
+        })
+
+        movieIds = movies.map(movie => movie.id);
+        console.log("Movie IDs for next function:", movieIds);
+
+        getAllMovieDetails().then(() => {
+            initializeHoverEffect();
+        });
+
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
+}
+
 
 //2ND API CALL for top 10
 
 const apiKey = "bb40bba9ec0647c0d0b72356663d2967";
 // const movieIds = [138843, 280092, 155, 1726, 8966, 9502, 53182, 238636, 9360, 157336]; 
-const movieIds = [99861, 140607, 135397, 27205, 138843, 280092, 9502, 1359, 42246, 211672]; 
+// const movieIds = [99861, 140607, 135397, 27205, 138843, 280092, 9502, 1359, 42246, 211672]; 
 // Replace with your movie IDs
 const movieDetails = [];
 
@@ -128,15 +166,31 @@ async function getAllMovieDetails() {
         });
         // console.log("Movie details have been updated in the DOM.");
         updateCarousel();
+        updateMovieImages();
     } catch (error) {
         console.error("Error fetching movie details:", error);
     }
 }
 
+function updateMovieImages() {
+    const slides = document.querySelectorAll(".slide");
+
+    movieDetails.forEach((movieDetail, index) => {
+        const slide = slides[index];
+        if (slide) {
+            const imgElement = slide.querySelector("img");
+            if (imgElement) {
+                // Set the backdrop image from movieDetails
+                imgElement.src = movieDetail.backdrop_path;
+            }
+        }
+    });
+}
+
+getMoviesInitial();
+
 // Run the function
-getAllMovieDetails().then(() => {
-    initializeHoverEffect();
-});
+
 
 //--------------------------------------------------------------------------------------------
 

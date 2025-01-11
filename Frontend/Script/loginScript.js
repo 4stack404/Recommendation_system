@@ -1,3 +1,5 @@
+localStorage.removeItem("selectedMovies");
+
 const searchInput = document.getElementById("movie-search");
 const suggestionsList = document.getElementById("suggestions");
 const selectedMoviesList = document.getElementById("selected-movies-list");
