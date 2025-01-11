@@ -2,12 +2,21 @@ import pandas as pd
 import pickle
 from fastapi import FastAPI
 import random
+from fastapi.middleware.cors import CORSMiddleware
 
 dataset = pd.DataFrame(pickle.load(open('dataset.pkl', 'rb')))
 movie_info = pd.DataFrame(pickle.load(open('movie_info.pkl', 'rb')))
 movies = pickle.load(open('movies_list.pkl', 'rb'))
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def recommend(movie):
     movie_index = dataset[dataset['original_title'] == movie].index[0]
@@ -19,10 +28,10 @@ def recommendation(movie: str):
     try:
         movie_list = movie.split(",")
         num_movies = len(movie_list)
-        recommendations = set()
+        recommendations = []
 
         if num_movies == 1:
-            recommendations.update(recommend(movie_list[0]))
+            recommendations.extend(recommend(movie_list[0]))
         else:
             recs_per_movie = [10 // num_movies] * num_movies
             for i in range(10 % num_movies):
@@ -30,9 +39,11 @@ def recommendation(movie: str):
 
             for i, mov in enumerate(movie_list):
                 recs = random.sample(recommend(mov), recs_per_movie[i])
-                recommendations.update(recs)
+                recommendations.extend(recs)
 
-        recommendations = list(recommendations)[:10] 
+        recommendations = list(dict.fromkeys(recommendations))
+        recommendations = recommendations[:10]
+
         movs = []
         for index in recommendations:
             info = {
@@ -45,7 +56,7 @@ def recommendation(movie: str):
                 'director': movie_info['director'][index],
                 'production_companies': movie_info['production_companies'][index],
                 'runtime': int(movie_info['runtime'][index]),
-                'popularity': int(movie_info['popularity'][index]),
+                'rating': float(movie_info['vote_average'][index]),
                 'release_date': movie_info['release_date'][index],
                 'release_year': int(movie_info['release_year'][index]),
             }
