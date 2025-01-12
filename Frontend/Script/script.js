@@ -87,7 +87,7 @@ async function getMoviesInitial() {
 
 const apiKey = "bb40bba9ec0647c0d0b72356663d2967";
 // const movieIds = [138843, 280092, 155, 1726, 8966, 9502, 53182, 238636, 9360, 157336]; 
-// const movieIds = [99861, 140607, 135397, 27205, 138843, 280092, 9502, 1359, 42246, 211672]; 
+// const movieIds = [99861, 140607, 135397, 278, 27205, 138843, 280092, 9502, 42246, 211672]; 
 // Replace with your movie IDs
 const movieDetails = [];
 
